@@ -1,9 +1,14 @@
 export const GAME_TITLE = process.env.REACT_APP_GAME_NAME!
 
-export const WIN_MESSAGES = ['Great Job!', 'Awesome', 'Well done!']
+export const WIN_MESSAGES = [
+  'You beet it!',
+  'Egg-cellent!',
+  'Souper!',
+  'Lettuce celebrate!',
+]
 export const GAME_COPIED_MESSAGE = 'Game copied to clipboard'
-export const NOT_ENOUGH_LETTERS_MESSAGE = 'Not enough letters'
-export const WORD_NOT_FOUND_MESSAGE = 'Word not found'
+export const NOT_ENOUGH_LETTERS_MESSAGE = 'Miss steak! Not enough letters'
+export const WORD_NOT_FOUND_MESSAGE = 'This word doughnot belong here'
 export const HARD_MODE_ALERT_MESSAGE =
   'Hard Mode can only be enabled at the start!'
 export const CORRECT_WORD_MESSAGE = (solution: string) =>
