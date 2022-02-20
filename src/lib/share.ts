@@ -44,6 +44,6 @@ export const generateEmojiGrid = (guesses: string[]) => {
           })
           .join('')
       })
-      .join('\n') + '\n\nwww.foodle.com'
+      .join('\n') + '\n\nhttps://foodlegame.herokuapp.com'
   )
 }
