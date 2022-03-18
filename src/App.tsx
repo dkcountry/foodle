@@ -5,7 +5,9 @@ import {
 } from '@heroicons/react/outline'
 import { useState, useEffect } from 'react'
 import { Alert } from './components/alerts/Alert'
+import { AlertImage } from './components/alerts/AlertImage'
 import { Grid } from './components/grid/Grid'
+import { GridBlank } from './components/grid/GridBlank'
 import { Keyboard } from './components/keyboard/Keyboard'
 import { InfoModal } from './components/modals/InfoModal'
 import { StatsModal } from './components/modals/StatsModal'
@@ -22,6 +24,7 @@ import {
   MAX_WORD_LENGTH,
   MAX_CHALLENGES,
   ALERT_TIME_MS,
+  SUCCESS_ALERT_TIME_MS,
   REVEAL_TIME_MS,
   GAME_LOST_INFO_DELAY,
 } from './constants/settings'
@@ -39,6 +42,7 @@ import {
   getStoredIsHighContrastMode,
 } from './lib/localStorage'
 import { analytics } from './services/analytics'
+import Orange from './assets/orange.png'
 
 import './App.css'
 
@@ -131,7 +135,7 @@ function App() {
         setTimeout(() => {
           setSuccessAlert('')
           setIsStatsModalOpen(true)
-        }, ALERT_TIME_MS)
+        }, SUCCESS_ALERT_TIME_MS)
       }, REVEAL_TIME_MS * MAX_WORD_LENGTH)
     }
     if (isGameLost) {
@@ -241,12 +245,15 @@ function App() {
           onClick={() => setIsSettingsModalOpen(true)}
         />
       </div>
-      <Grid
-        guesses={guesses}
-        currentGuess={currentGuess}
-        isRevealing={isRevealing}
-        currentRowClassName={currentRowClass}
-      />
+      {successAlert === '' && (
+        <Grid
+          guesses={guesses}
+          currentGuess={currentGuess}
+          isRevealing={isRevealing}
+          currentRowClassName={currentRowClass}
+        />
+      )}
+      {successAlert !== '' && <GridBlank />}
       <Keyboard
         onChar={onChar}
         onDelete={onDelete}
@@ -298,6 +305,7 @@ function App() {
         variant="success"
         topMost={true}
       />
+      <AlertImage isOpen={successAlert !== ''} image={Orange} />
     </div>
   )
 }
