@@ -1,9 +1,9 @@
 from pie.word_list import food_list
 from google_images_search import GoogleImagesSearch
 
-gis = GoogleImagesSearch('AIzaSyCo4jJU96MvuUm9wN7y_5KzyZZLMdffm4Q', '7a387b681168bfee0')
+for food in food_list:
+    gis = GoogleImagesSearch('AIzaSyCo4jJU96MvuUm9wN7y_5KzyZZLMdffm4Q', '7a387b681168bfee0')
 
-for food in food_list[0:5]:
     path_to_dir = '/Users/xinyunrong/Desktop/Code/foodle/pie/images/{}'.format(food)
 
     _search_params = {
@@ -21,5 +21,7 @@ for food in food_list[0:5]:
     for img in images:
         img.download(path_to_dir)
         img = img.resize(320, 320)
+
+    del gis
 
 
