@@ -42,8 +42,6 @@ import {
   getStoredIsHighContrastMode,
 } from './lib/localStorage'
 import { analytics } from './services/analytics'
-import Orange from './assets/orange.png'
-
 import './App.css'
 
 function App() {
@@ -305,7 +303,7 @@ function App() {
         variant="success"
         topMost={true}
       />
-      <AlertImage isOpen={successAlert !== ''} image={Orange} />
+      <AlertImage isOpen={successAlert !== ''} solution={solution} />
     </div>
   )
 }
